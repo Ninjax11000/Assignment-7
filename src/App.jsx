@@ -13,17 +13,28 @@ function App() {
   const handleReadTime=(time)=>{
     
     const intTime= parseInt(time);
-    const previousReadTime = JSON.parse(localStorage.getItem("readTime"));
+    const previousReadTime = readTime;
     if (previousReadTime) {
       const sum = previousReadTime + intTime;
-      localStorage.setItem("readTime", sum);
+      
       setReadTime(sum);
 
     } else {
-      localStorage.setItem("readTime", intTime);
+      
      setReadTime(intTime);
     }
   }
+  const [bookmarks, setBookMark]=useState([]);
+  const handleBookmark = (blog) => {
+    const getBookmarks = bookmarks.find(bookmark => bookmark.id === blog.id);
+    if (getBookmarks) {
+        console.log('exists!!!');
+        return;
+    }
+    const newBookmarks = [...bookmarks, blog];
+    setBookMark(newBookmarks);
+}
+
   return (
     <div className="App container">
       <Nav></Nav>
@@ -32,10 +43,10 @@ function App() {
       </div>
       <div className="row row-cols-1 row-cols-md-2 ">
         <div className="col blog-container col-md-8 ">
-          <Blogs handleReadTime={handleReadTime}></Blogs>
+          <Blogs handleReadTime={handleReadTime} handleBookmark={handleBookmark}></Blogs>
         </div>
         <div className="col side-bar col-md-4 my-2">
-          <Sidebar readTime={readTime}></Sidebar>
+          <Sidebar readTime={readTime} bookmarks={bookmarks}></Sidebar>
         </div>
 
       </div>

@@ -6,21 +6,22 @@ import Nav from './components/Navbar/Nav';
 import Questions from './components/Questionaries/Questions';
 import Blogs from './components/Blogs/Blogs';
 import Sidebar from './components/Sidebar/Sidebar';
+import { read } from '@popperjs/core';
 
 function App() {
+  const [readTime, setReadTime]= useState(0)
   const handleReadTime=(time)=>{
-  
-   
+    
     const intTime= parseInt(time);
     const previousReadTime = JSON.parse(localStorage.getItem("readTime"));
     if (previousReadTime) {
       const sum = previousReadTime + intTime;
       localStorage.setItem("readTime", sum);
-      
+      setReadTime(sum);
 
     } else {
-      localStorage.setItem("readTime", time);
-     
+      localStorage.setItem("readTime", intTime);
+     setReadTime(intTime);
     }
   }
   return (
@@ -34,7 +35,7 @@ function App() {
           <Blogs handleReadTime={handleReadTime}></Blogs>
         </div>
         <div className="col side-bar col-md-4 my-2">
-          <Sidebar ></Sidebar>
+          <Sidebar readTime={readTime}></Sidebar>
         </div>
 
       </div>

@@ -8,8 +8,21 @@ import Blogs from './components/Blogs/Blogs';
 import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleReadTime=(time)=>{
+  
+   
+    const intTime= parseInt(time);
+    const previousReadTime = JSON.parse(localStorage.getItem("readTime"));
+    if (previousReadTime) {
+      const sum = previousReadTime + intTime;
+      localStorage.setItem("readTime", sum);
+      
 
+    } else {
+      localStorage.setItem("readTime", time);
+     
+    }
+  }
   return (
     <div className="App container">
       <Nav></Nav>
@@ -18,10 +31,10 @@ function App() {
       </div>
       <div className="row row-cols-1 row-cols-md-2 ">
         <div className="col blog-container col-md-8 ">
-          <Blogs></Blogs>
+          <Blogs handleReadTime={handleReadTime}></Blogs>
         </div>
         <div className="col side-bar col-md-4 my-2">
-          <Sidebar></Sidebar>
+          <Sidebar ></Sidebar>
         </div>
 
       </div>

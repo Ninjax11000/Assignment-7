@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Blog from '../Blog/Blog';
 import './Blogs.css'
 
-const Blogs = () => {
+const Blogs = ({handleReadTime}) => {
+   
         const [blogs,setBlogs]=useState([]);
     useEffect(()=>{
         fetch('data.json')
@@ -16,6 +17,7 @@ const Blogs = () => {
                 blogs.map((blog)=>(
                     <Blog blog={blog}
                         key={blog.id}
+                        handleReadTime={handleReadTime}
                     ></Blog>
                 ))
             }

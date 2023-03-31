@@ -16,11 +16,11 @@ function App() {
       <div>
         <hr />
       </div>
-      <div class="row row-cols-1 row-cols-md-2 ">
-        <div class="col blog-container col-md-8 ">
+      <div className="row row-cols-1 row-cols-md-2 ">
+        <div className="col blog-container col-md-8 ">
           <Blogs></Blogs>
         </div>
-        <div class="col side-bar col-md-4 my-2">
+        <div className="col side-bar col-md-4 my-2">
           <Sidebar></Sidebar>
         </div>
 

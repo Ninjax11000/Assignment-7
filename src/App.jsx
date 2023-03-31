@@ -7,6 +7,8 @@ import Questions from './components/Questionaries/Questions';
 import Blogs from './components/Blogs/Blogs';
 import Sidebar from './components/Sidebar/Sidebar';
 import { read } from '@popperjs/core';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [readTime, setReadTime]= useState(0)
@@ -28,7 +30,7 @@ function App() {
   const handleBookmark = (blog) => {
     const getBookmarks = bookmarks.find(bookmark => bookmark.id === blog.id);
     if (getBookmarks) {
-        console.log('exists!!!');
+       toast("Already exists!!")
         return;
     }
     const newBookmarks = [...bookmarks, blog];
@@ -50,6 +52,7 @@ function App() {
         </div>
 
       </div>
+      <ToastContainer></ToastContainer>
       <Questions></Questions>
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark} from '@fortawesome/free-solid-svg-icons'
 
-const Blog = (props) => {
+const Blog1 = (props) => {
    
     const handleReadTime= props.handleReadTime;
     const handleBookmark= props.handleBookmark;
@@ -33,4 +33,4 @@ const Blog = (props) => {
     );
 };
 
-export default Blog;
+export default Blog1;

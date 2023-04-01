@@ -3,12 +3,13 @@ import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Navbar/Nav';
-import Questions from './components/Questionaries/Questions';
+import Questions from './components/Questionaries/Blog';
 import Blogs from './components/Blogs/Blogs';
 import Sidebar from './components/Sidebar/Sidebar';
 import { read } from '@popperjs/core';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Blog from './components/Questionaries/Blog';
 
 function App() {
   const [readTime, setReadTime]= useState(0)
@@ -30,7 +31,7 @@ function App() {
   const handleBookmark = (blog) => {
     const getBookmarks = bookmarks.find(bookmark => bookmark.id === blog.id);
     if (getBookmarks) {
-       toast("Already exists!!")
+       toast("You Have Already Bookmarked This Blog!")
         return;
     }
     const newBookmarks = [...bookmarks, blog];
@@ -53,7 +54,7 @@ function App() {
 
       </div>
       <ToastContainer></ToastContainer>
-      <Questions></Questions>
+      <Blog></Blog>
     </div>
   )
 }
